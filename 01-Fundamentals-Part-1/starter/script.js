@@ -35,7 +35,7 @@ console.log(resultOfMultiply);
  */
 
 // Challange 01
-function CalculateBmi(mass = 0, height = 0) {
+/* function CalculateBmi(mass = 0, height = 0) {
   return mass / height ** 2;
 }
 
@@ -53,4 +53,57 @@ const isJohnHasHigherBmi = johnBmi > markBmi;
 console.log("Mark's BMI is: " + markBmi);
 console.log("John's BMI is: " + johnBmi);
 console.log("Is Mark has higher BMI? " + isMarkHasHigherBmi);
-console.log("Is John has higher BMI? " + isJohnHasHigherBmi);
+console.log("Is John has higher BMI? " + isJohnHasHigherBmi); */
+
+/* const firstName = "Muhsin";
+const job = "Software Engineer";
+const birthYear = 1993;
+const currentYear = 2020;
+const age = currentYear - birthYear;
+
+const greeting = `I'm ${firstName} and I'm ${age} years old ${job}.`;
+console.log(greeting);
+
+console.log(`Multiple
+line
+string.`); */
+
+/* const age = 12;
+const driverAgeLimit = 18;
+
+if (age >= driverAgeLimit) {
+  console.log(`You can take driver license. 🚗`);
+} else {
+  console.log(
+    `You can't take driver license. Come back ${
+      driverAgeLimit - age
+    } years later. 😢`
+  );
+} */
+
+function CalculateBmi(mass = 0, height = 0) {
+  return mass / height ** 2;
+}
+
+let markMass = 80;
+let markHeight = 1.75;
+let markBmi = CalculateBmi(markMass, markHeight);
+
+let johnMass = 80;
+let johnHeight = 1.75;
+let johnBmi = CalculateBmi(johnMass, johnHeight);
+
+if (markBmi > johnBmi) {
+  console.log(
+    `Mark's BMI is ${markBmi} and higher than
+    John's BMI (${johnBmi})`
+  );
+} else if (johnBmi > markBmi) {
+  console.log(
+    `John's BMI is ${johnBmi} and higher than
+    Mark's BMI (${johnBmi})`
+  );
+} else {
+  console.log(`John's BMI ${johnBmi} and
+  Mark's BMI (${johnBmi}) are equal.`);
+}
