@@ -81,7 +81,9 @@ if (age >= driverAgeLimit) {
   );
 } */
 
-function CalculateBmi(mass = 0, height = 0) {
+// Challange 02
+
+/* function CalculateBmi(mass = 0, height = 0) {
   return mass / height ** 2;
 }
 
@@ -107,3 +109,133 @@ if (markBmi > johnBmi) {
   console.log(`John's BMI ${johnBmi} and
   Mark's BMI (${johnBmi}) are equal.`);
 }
+ */
+
+/* 
+// Type Conversion
+const birthYearFromInput = "1991";
+const birthYear = Number(birthYearFromInput);
+console.log(birthYearFromInput, birthYear);
+
+const countOfItem = 5;
+const countOfItemAsString = String(countOfItem);
+console.log(countOfItem, countOfItemAsString);
+
+// Type Coercian
+const ageOfUser = 26;
+const countOfApple = 33;
+const greetingMessage = "Hello, I'm";
+
+console.log("I have " + countOfApple + " apples in my basket.");
+console.log(`${greetingMessage} ${ageOfUser} old.`);
+console.log("25" - "25" + 10);
+console.log("25" + 25 + 10);
+console.log("25" / "25" + 10);
+console.log("25" ** "2");
+console.log("25" < "10");
+console.log("25" >= "10");
+
+let n = "1" + 1;
+n = n - 1;
+console.log(n);
+
+console.log(2 + 1 + 5 + "3");
+console.log("1" + "5" - 5 + "5"); */
+
+/* 
+// 5 Falsy Values are: 0, '', undefined, null, NaN
+const falsyValueOne = 0;
+const falsyValueTwo = "";
+const falsyValueThree = undefined;
+const falsyValueFour = null;
+const falsyValueFive = NaN;
+
+console.log(
+  Boolean(falsyValueOne),
+  Boolean(falsyValueTwo),
+  Boolean(falsyValueThree),
+  Boolean(falsyValueFour),
+  Boolean(falsyValueFive)
+);
+
+console.log(Boolean(1), Boolean("Hello")); */
+
+/* 
+// Equality Operators
+
+console.log(18 === 18);
+console.log(18 === "18");
+console.log(18 == 18);
+console.log(18 == "18");
+
+const favoriteNumber = Number(prompt("What is your favorite number?"));
+console.log(typeof favoriteNumber, favoriteNumber);
+
+if (favoriteNumber === 23) {
+  console.log("23 is great number!");
+} */
+
+// Challange 03
+
+function CalculateAvarageOfTeam(scores) {
+  let totalScore = 0;
+
+  scores.forEach((score) => {
+    totalScore = totalScore + score;
+  });
+
+  return totalScore / scores.length;
+}
+
+const dolphinTeamScores = [100, 100, 100];
+const dolphinTeamScoreAvarage = CalculateAvarageOfTeam(dolphinTeamScores);
+console.log(dolphinTeamScoreAvarage);
+
+const koalasTeamScores = [100, 100, 100];
+const koalasTeamScoreAvarage = CalculateAvarageOfTeam(koalasTeamScores);
+console.log(koalasTeamScoreAvarage);
+
+// STANDARD
+/* if (dolphinTeamScoreAvarage > koalasTeamScoreAvarage)
+  console.log("Dolphin team is won!");
+else if (koalasTeamScoreAvarage > dolphinTeamScoreAvarage)
+  console.log("Koalas team is won!");
+else console.log("It's draw!"); */
+
+/* // BONUS 1
+if (
+  dolphinTeamScoreAvarage > koalasTeamScoreAvarage &&
+  dolphinTeamScoreAvarage >= 100
+)
+  console.log("Dolphin team is won!");
+else if (
+  koalasTeamScoreAvarage > dolphinTeamScoreAvarage &&
+  koalasTeamScoreAvarage >= 100
+)
+  console.log("Koalas team is won!");
+else if (
+  dolphinTeamScoreAvarage === koalasTeamScoreAvarage &&
+  dolphinTeamScoreAvarage >= 100 &&
+  koalasTeamScoreAvarage >= 100
+)
+  console.log("It's draw!"); */
+
+// BONUS 2
+if (
+  dolphinTeamScoreAvarage > koalasTeamScoreAvarage &&
+  dolphinTeamScoreAvarage >= 100
+)
+  console.log("Dolphin team is won the trophy! 🏆");
+else if (
+  koalasTeamScoreAvarage > dolphinTeamScoreAvarage &&
+  koalasTeamScoreAvarage >= 100
+)
+  console.log("Koalas team is won the trophy! 🏆");
+else if (
+  dolphinTeamScoreAvarage === koalasTeamScoreAvarage &&
+  dolphinTeamScoreAvarage >= 100 &&
+  koalasTeamScoreAvarage >= 100
+)
+  console.log("Both of them are won the trophy! 🏆🏆");
+else if (dolphinTeamScoreAvarage <= 100 && koalasTeamScoreAvarage <= 100)
+  console.log("There is no trophy for teams. 😭");
