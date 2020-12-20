@@ -177,7 +177,7 @@ if (favoriteNumber === 23) {
 
 // Challange 03
 
-function CalculateAvarageOfTeam(scores) {
+/* function CalculateAvarageOfTeam(scores) {
   let totalScore = 0;
 
   scores.forEach((score) => {
@@ -193,7 +193,7 @@ console.log(dolphinTeamScoreAvarage);
 
 const koalasTeamScores = [100, 100, 100];
 const koalasTeamScoreAvarage = CalculateAvarageOfTeam(koalasTeamScores);
-console.log(koalasTeamScoreAvarage);
+console.log(koalasTeamScoreAvarage); */
 
 // STANDARD
 /* if (dolphinTeamScoreAvarage > koalasTeamScoreAvarage)
@@ -221,7 +221,7 @@ else if (
   console.log("It's draw!"); */
 
 // BONUS 2
-if (
+/* if (
   dolphinTeamScoreAvarage > koalasTeamScoreAvarage &&
   dolphinTeamScoreAvarage >= 100
 )
@@ -238,4 +238,53 @@ else if (
 )
   console.log("Both of them are won the trophy! 🏆🏆");
 else if (dolphinTeamScoreAvarage <= 100 && koalasTeamScoreAvarage <= 100)
-  console.log("There is no trophy for teams. 😭");
+  console.log("There is no trophy for teams. 😭"); */
+
+// Switch Statement
+/* 
+const day = "sunday";
+
+switch (day) {
+  case "monday": // day === monday
+    console.log("Plan course streaming.");
+    console.log("Go to meetup.");
+    break;
+  case "tuesday":
+    console.log("Workout for basketball match.");
+    break;
+  case "wednesday":
+  case "thursday":
+    console.log("Watch coding videos.");
+    break;
+  case "friday":
+    console.log("Code the project.");
+    break;
+  case "saturday":
+  case "sunday":
+    console.log("Enjoy with the weekend.");
+    break;
+  default:
+    console.log("Invalid day name");
+    break;
+} */
+
+// Ternary Operator
+
+/* const age = 21;
+
+age >= 18
+  ? console.log("I like to drink wine 🍷")
+  : console.log("I like to drink juice 🥤");
+
+const drink = age >= 18 ? "wine 🍷" : "juice 🥤";
+
+console.log(`I like to drink ${drink}`); */
+
+// Coding Challange 04
+
+const bill = 50;
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+const total = bill + tip;
+console.log(
+  `The bill was $${bill}, the tip was $${tip} and the total is $${total}`
+);
