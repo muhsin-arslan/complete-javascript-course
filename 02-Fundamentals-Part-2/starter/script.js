@@ -211,7 +211,7 @@ console.log(totals);
 
 // Objects
 
-const personArray = [
+/* const personArray = [
   "Michael",
   "Dunky",
   new Date().getFullYear() - 1990,
@@ -255,4 +255,76 @@ console.log(
   personObject[interestedIn] === undefined
     ? "There is no information"
     : personObject[interestedIn]
-);
+); */
+
+/* 
+const personObject = {
+  firstName: "Michael",
+  lastName: "Dunky",
+  birthYear: 1991,
+  job: "basketball player",
+  friends: ["Michael Jordan", "Kobe Bryant", "Derrick Rose"],
+  hasDriverLicense: true,
+
+  calculateAge: function () {
+    this.age = new Date().getFullYear() - this.birthYear;
+    return this.age;
+  },
+
+  summarize: function () {
+    this.information = `Hello this is ${this.age} years old ${this.job}, ${
+      this.firstName
+    } ${this.lastName}. His friends are ${this.friends[0]}, ${
+      this.friends[1]
+    }, ${this.friends[2]}. ${
+      this.hasDriverLicense
+        ? "Oh and he has a driver license."
+        : "Oh he don't have a driver license."
+    }`;
+
+    return this.information;
+  },
+};
+
+console.log(personObject.calculateAge());
+console.log(personObject.summarize());
+ */
+
+/* 
+const michael = {
+  firstName: "Michael",
+  lastName: "Polski",
+  weight: 80,
+  height: 190,
+
+  calculateBmi: function () {
+    this.bmi = this.weight / this.height ** 2;
+    return this.bmi;
+  },
+};
+
+const paul = {
+  firstName: "Paul",
+  lastName: "Swegezin",
+  weight: 80,
+  height: 190,
+
+  calculateBmi: function () {
+    this.bmi = this.weight / this.height ** 2;
+    return this.bmi;
+  },
+};
+
+const isMichaelHigherBmi = michael.calculateBmi() > paul.calculateBmi();
+const isPaulHigherBmi = paul.calculateBmi() > michael.calculateBmi();
+const isMichaelAndPaulEqualBmi = michael.calculateBmi() === paul.calculateBmi();
+
+if (isMichaelHigherBmi) console.log("Michael is have higher BMI than Paul");
+if (isPaulHigherBmi) console.log("Paul is have higher BMI than Michael");
+if (isMichaelAndPaulEqualBmi)
+  console.log("Michael and Paul both of their BMI is equal");
+ */
+
+// Loops
+for (let repetition = 1; repetition <= 30; repetition++)
+  console.log(`Lifting weights repetition ${repetition} 🏋️‍♀️`);
