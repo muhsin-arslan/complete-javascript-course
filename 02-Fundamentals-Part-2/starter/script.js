@@ -326,5 +326,90 @@ if (isMichaelAndPaulEqualBmi)
  */
 
 // Loops
-for (let repetition = 1; repetition <= 30; repetition++)
-  console.log(`Lifting weights repetition ${repetition} 🏋️‍♀️`);
+/* for (let repetition = 1; repetition <= 30; repetition++)
+  console.log(`Lifting weights repetition ${repetition} 🏋️‍♀️`); */
+
+/* const friendArray = ["Michael Jordan", "Kobe Bryant", "Derrick Rose"];
+
+for (let i = 0; i < friendArray.length; i++) {
+  console.log(friendArray[i]);
+}
+
+const years = [1991, 2000, 1990, 2005];
+const ages = [];
+const adults = [];
+
+// Loop for array
+for (let i = 0; i < years.length; i++) {
+  const calculatedAge = new Date().getFullYear() - years[i];
+  ages.push(calculatedAge);
+}
+console.log(ages);
+
+// Continue keyword
+for (let i = 0; i < years.length; i++) {
+  const calculatedAge = new Date().getFullYear() - years[i];
+
+  if (calculatedAge < 18) continue;
+  adults.push(calculatedAge);
+}
+console.log(adults);
+
+// Break keyword
+for (let i = 0; i < years.length; i++) {
+  const calculatedAge = new Date().getFullYear() - years[i];
+
+  if (calculatedAge < 18) break;
+
+  console.log(`${i + 1}. person is adult.`);
+}
+ */
+
+/* // Reverse loop
+var myNumbers = [1, 3, 5, 7, 9];
+
+for (let i = myNumbers.length - 1; i >= 0; i--) {
+  console.log(myNumbers[i]);
+}
+
+// Loop inside Loop
+var mainNumbers = [1, 3, 7];
+var multiplierNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+for (let i = 0; i < mainNumbers.length; i++) {
+  console.log(`Multiplers for ${mainNumbers[i]}`);
+  console.log("-----------------------");
+  for (let j = 0; j < multiplierNumbers.length; j++) {
+    console.log(
+      `${mainNumbers[i]} x ${multiplierNumbers[j]} = ${
+        mainNumbers[i] * [multiplierNumbers[j]]
+      }`
+    );
+  }
+  console.log("\n");
+}
+ */
+
+// While loop
+/* const runningGoalAsMeter = 100;
+let currentRunningMeter = 0;
+
+while (currentRunningMeter < runningGoalAsMeter) {
+  currentRunningMeter += 10;
+  console.log(
+    `I'm running and I'm at ${currentRunningMeter} meters of my ${runningGoalAsMeter} meters goal.`
+  );
+} */
+
+/* let dice = Math.trunc(Math.random() * 6) + 1;
+let numberOfRolled = 1;
+if (dice === 6) console.log("You rolled a 6 at the beginning and game is over");
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  numberOfRolled++;
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6)
+    console.log(`You rolled a 6 at ${numberOfRolled}.rolling. Game is over.`);
+}
+ */
