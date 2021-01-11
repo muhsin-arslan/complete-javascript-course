@@ -11,6 +11,10 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  orderDelivery: function (obj) {
+    console.log(obj);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -27,6 +31,48 @@ const restaurant = {
   },
 };
 
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'This is an address',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+// Destructuring Object
+const { nameOfRestaurant, openingHours, categories } = restaurant;
+console.log(nameOfRestaurant, openingHours, categories);
+
+/*
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+console.log(restaurantName, hours, tags);
+
+// Default Values
+const { mainMenu: menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters); */
+
+// Mutating Variables
+let a = 111;
+let b = 999;
+console.log(a, b);
+const obj = { a: 23, b: 7, c: 14 };
+
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested Objects
+const { sat } = openingHours;
+const {
+  fri: { open, close },
+} = openingHours;
+console.log(sat);
+console.log(open, close);
+
+/* 
 // Destructuring
 const arr = [2, 3, 4];
 const a = arr[0];
@@ -40,10 +86,10 @@ console.log(x, y, z);
 let [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
 
-/* const temp = main;
+const temp = main;
 main = secondary;
 secondary = temp;
-console.log(main, secondary); */
+console.log(main, secondary);
 
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
@@ -54,8 +100,8 @@ console.log(starter, mainCourse);
 
 // Nested Destructuring
 const nested = [2, 3, [5, 6]];
-/* const [i, , j] = nested;
-console.log(i, j); */
+const [i, , j] = nested;
+console.log(i, j);
 
 const [i, , [j, k]] = nested;
 console.log(i, j, k);
@@ -63,3 +109,4 @@ console.log(i, j, k);
 // Default Values
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
+ */
