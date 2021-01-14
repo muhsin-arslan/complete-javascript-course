@@ -15,6 +15,10 @@ const restaurant = {
     console.log(obj);
   },
 
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -31,16 +35,16 @@ const restaurant = {
   },
 };
 
-restaurant.orderDelivery({
+/* restaurant.orderDelivery({
   time: '22:30',
   address: 'This is an address',
   mainIndex: 2,
   starterIndex: 2,
-});
+}); */
 
 // Destructuring Object
-const { nameOfRestaurant, openingHours, categories } = restaurant;
-console.log(nameOfRestaurant, openingHours, categories);
+/* const { nameOfRestaurant, openingHours, categories } = restaurant;
+console.log(nameOfRestaurant, openingHours, categories); */
 
 /*
 const {
@@ -56,7 +60,7 @@ const { mainMenu: menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters); */
 
 // Mutating Variables
-let a = 111;
+/* let a = 111;
 let b = 999;
 console.log(a, b);
 const obj = { a: 23, b: 7, c: 14 };
@@ -70,7 +74,7 @@ const {
   fri: { open, close },
 } = openingHours;
 console.log(sat);
-console.log(open, close);
+console.log(open, close); */
 
 /* 
 // Destructuring
@@ -110,3 +114,46 @@ console.log(i, j, k);
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
  */
+
+// SPREAD OPERATOR
+/* const myArray = [7, 8, 9];
+const badNewArray = [1, 2, myArray[0], myArray[1], myArray[2]];
+const goodNewArray = [1, 2, ...myArray];
+
+console.log(myArray);
+console.log(badNewArray);
+console.log(goodNewArray);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu); */
+
+// Copy Array
+/* const mainMenuCopy = [...restaurant.mainMenu]; */
+
+// Join Arrays
+/* const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu); */
+
+// Itterables: arrays, strings, maps, sets. NOT: objects
+/* const firstName = 'Michael';
+const letters = [...firstName, ' ', 's'];
+console.log(letters); */
+
+// Real world example
+/* const ingredients = [
+  prompt("Let's make pasta: Ingredient 1?"),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+];
+
+console.log(ingredients);
+
+restaurant.orderPasta(...ingredients); */
+
+// Objects (ES 2018)
+const newRestaurant = { foundedIn: 1997, ...restaurant, founder: 'Jason' };
+console.log(newRestaurant);
+
+const copyOfRestaurant = { ...restaurant };
+copyOfRestaurant.name = "Muhsin's Grave";
+console.log(copyOfRestaurant);
