@@ -9,6 +9,10 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContents = document.querySelectorAll('.operations__content');
+const nav = document.querySelector('.nav');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -70,7 +74,195 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   // Matching strategy
   if (e.target.classList.contains('nav__link')) {
     const sectionId = e.target.getAttribute('href');
-    document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+    if (sectionId !== '#')
+      document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+// Tabbed Component \\
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Active Tab
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // Active content area
+  const activeContent = document.querySelector(
+    `.operations__content--${clicked.dataset.tab}`
+  );
+
+  tabsContents.forEach(tabContent =>
+    tabContent.classList.remove('operations__content--active')
+  );
+  activeContent.classList.add('operations__content--active');
+});
+
+// Menu Fade Animation \\
+const handleHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('.nav__logo');
+
+    siblings.forEach(sibling => {
+      if (sibling !== link) sibling.style.opacity = this;
+    });
+
+    logo.style.opacity = this;
+  }
+};
+
+// Passing "argument" to event handler \\
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
+
+// Sticky Navigation
+// const initialCoordinatesOfSection1 = section1.getBoundingClientRect();
+// window.addEventListener('scroll', function (e) {
+//   if (window.scrollY > initialCoordinatesOfSection1.top)
+//     nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// });
+
+// Stick Navigation with Intersection Observer API \\
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
+
+// Reveal Sections \\
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  sectionObserver.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(section => {
+  sectionObserver.observe(section);
+  //section.classList.add('section--hidden');
+});
+
+// Lazy Loading Images \\
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImage = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.src = entry.target.dataset.src;
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  imageObserver.unobserve(entry.target);
+};
+
+const imageObserver = new IntersectionObserver(loadImage, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
+
+imgTargets.forEach(image => imageObserver.observe(image));
+
+// Slider \\
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+const dotContainer = document.querySelector('.dots');
+
+let currentSlide = 0;
+let maxSlide = slides.length;
+
+const createDots = function () {
+  slides.forEach((_, index) => {
+    dotContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class="dots__dot" data-slide="${index}"></button>`
+    );
+  });
+};
+
+const activateDot = function (slide) {
+  document
+    .querySelectorAll('.dots__dot')
+    .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+  document
+    .querySelector(`.dots__dot[data-slide="${slide}"]`)
+    .classList.add('dots__dot--active');
+};
+
+const goToSlide = function (slideNumber) {
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(${100 * (index - slideNumber)}%)`;
+  });
+};
+
+const nextSlide = function () {
+  if (currentSlide === maxSlide - 1) currentSlide = 0;
+  else currentSlide++;
+  goToSlide(currentSlide);
+  activateDot(currentSlide);
+};
+
+const previousSlide = function () {
+  if (currentSlide === 0) currentSlide = maxSlide - 1;
+  else currentSlide--;
+  goToSlide(currentSlide);
+  activateDot(currentSlide);
+};
+
+const initSlide = function () {
+  createDots();
+  activateDot(0);
+  goToSlide(0);
+};
+
+initSlide();
+
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', previousSlide);
+
+document.addEventListener('keydown', function (e) {
+  e.key === 'ArrowLeft' && previousSlide();
+  e.key === 'ArrowRight' && nextSlide();
+});
+
+dotContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('dots__dot')) {
+    const { slide } = e.target.dataset;
+    goToSlide(slide);
+    activateDot(slide);
   }
 });
 
@@ -239,4 +431,59 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('I am from nav, event happaned at:', e.target);
   console.log('Event attached:', e.currentTarget);
   this.style.backgroundColor = randomColor();
+}); */
+
+// DOM TRAVERSING
+// const h1 = document.querySelector('h1');
+
+// Going downwards: child
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color = 'white';
+// h1.lastElementChild.style.color = 'black';
+
+// Going upwards: parents
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
+// h1.closest('h1').style.background = 'var(--gradient-primary)'; // Itself
+
+// Going sideways: siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
+
+// console.log(h1.parentElement.children);
+// [...h1.parentElement.children].forEach(function (element) {
+//   if (element !== h1) element.style.transform = 'scale(0.5)';
+// });
+
+// Intersaction Observer API
+// const observerCallback = function (entries, observer) {
+//   entries.forEach(entry => console.log(entry));
+// };
+
+// const observerOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(observerCallback, observerOptions);
+// observer.observe(section1);
+
+// LIFECYCLE DOM EVENTS
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree was builded.', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+/* window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+  console.log(e);
+  e.returnValue = ''; // We're not available to edit message anymore cause of abuses.
 }); */
