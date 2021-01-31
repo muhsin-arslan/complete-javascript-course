@@ -272,7 +272,7 @@ Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor); */
 
 // CHALLANGE #03
-const Car = function (model, speed) {
+/* const Car = function (model, speed) {
   this.model = model;
   this.speed = speed;
 };
@@ -315,4 +315,143 @@ console.log(tesla);
 tesla.brake();
 tesla.accelerate();
 tesla.accelerate();
-tesla.accelerate();
+tesla.accelerate(); */
+
+// CLASS INHERITENCE
+/* class Person {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // INSTANCE METHODS
+  // Functions will be added to prototype
+  calculateAge() {
+    console.log(new Date().getFullYear() - this.birthYear);
+  }
+
+  get age() {
+    return new Date().getFullYear() - this.birthYear;
+  }
+
+  // Set a property that already exists.
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else alert(`${name} is not full name.`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // STATIC METHODS
+  static hey() {
+    console.log('Hello there 🙋🏻‍♂️🙋🏻‍♀️');
+    console.log(this);
+  }
+}
+
+class Student extends Person {
+  constructor(fullName, birthYear, course) {
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(
+      `My name is ${this.fullName}. I'm ${this.age} years old and I study ${this.course}`
+    );
+  }
+
+  calcAge() {
+    console.log(`I'm ${new Date().getFullYear() - this.birthYear} years old.`);
+  }
+}
+
+const martha = new Student('Martha Jackson', 1999, 'Computer Science');
+martha.introduce();
+martha.calcAge(); */
+
+// Public fields
+// Private fields
+// Public methods
+// Private methods
+
+class Account {
+  // Public fields (only at instances)
+  locale = navigator.language;
+
+  // Private fields
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // Protected Property
+    this.#pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
+
+    console.log(`Thank you ${this.owner} for opening an account at our bank`);
+  }
+
+  // Private Methods
+  #approveLoan(value) {
+    return true;
+  }
+
+  // Public Methods
+  getMovements() {
+    return this.#movements;
+  }
+
+  getBalance() {
+    console.log(
+      `Total Balance: ${this.#movements.reduce(
+        (value, previousValue) => value + previousValue
+      )} ${this.currency}`
+    );
+  }
+
+  deposit(value) {
+    this.#movements.push(value);
+    return this;
+  }
+
+  draw(value) {
+    this.deposit(-value);
+    return this;
+  }
+
+  requestLoan(value) {
+    if (this.#approveLoan(value)) this.deposit(value);
+    console.log(`Loan was approved!`);
+    return this;
+  }
+}
+
+const account1 = new Account('Muhsin', 'TRY', '1111');
+account1.deposit(1500);
+account1.draw(1000);
+account1.requestLoan(1000);
+console.log(account1.getMovements());
+console.log(account1);
+
+// console.log(account1.#movements); // Private field
+// console.log(account1.#pin); // Private field
+// account1.#approveLoan(100); // Private method
+
+// Chaining
+account1
+  .deposit(300)
+  .deposit(500)
+  .draw(150)
+  .requestLoan(1500)
+  .draw(1000)
+  .deposit(5000)
+  .getBalance();
+
+console.log(account1);
