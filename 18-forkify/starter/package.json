@@ -10,6 +10,8 @@
   "author": "Muhsin Arslan",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.12.13",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@parcel/optimizer-cssnano": "^2.0.0-nightly.592",
     "@parcel/optimizer-htmlnano": "^2.0.0-nightly.592",
     "@parcel/packager-css": "^2.0.0-nightly.592",
